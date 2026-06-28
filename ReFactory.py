@@ -1,0 +1,58 @@
+import sympy 
+import os
+import time
+x ,y ,z = sympy.Symbol('x'), sympy.Symbol('y'), sympy.Symbol('z')
+
+while True:
+    os.system("clear")
+    print("======================================================")
+    print("················BIENVENIDO A REFACTORY················")
+    print("(Programa de factorización de expresiones algebraicas)")
+    print("======================================================")
+    print("Ingrese la expresión algebraica que desea factorizar: ")
+    print("↓--------↓--------↓")
+    print(" ")
+    
+    try:
+        time.sleep(0.2)
+        Expression = input("Ingrese la expresión: ")
+        
+        Expression = Expression.replace('x', '*x')
+        Expression = Expression.replace('y', '*y')
+        Expression = Expression.replace('z', '*z')
+        Expression = Expression.replace('^', '**')
+
+        Expression = sympy.sympify(Expression)
+        if Expression.has(x, y, z):
+            pass
+
+        else:
+            for i in range(5, 0, -1):
+                os.system("clear")
+                print("La expresión debe contener al menos una variable (x, y o z).")
+                print(' ')
+                print(f'Volviendo al menú en ({i}) segundos...')
+                time.sleep(1)
+            continue
+        
+    except:
+        os.system("clear")
+        print("==================================================")
+        print("[Error]: La expresión ingresada no es válida.")
+        print('Recuerde que usas los simbolos:')
+        print('|* para multiplicar, + para sumar, - para restar, / para dividir y ** para elevar a una potencia.|')
+        print('===================================================')
+        print(' ')
+        input("Presione Enter para continuar...")
+        continue
+    else:
+        print('==================================================')
+        print('Su resultado es:')
+        Result = sympy.factor(Expression)
+        
+        Result = str(Result).replace('**', '^')
+        Result = Result.replace('*', '')
+        
+        print(f'_______________({Result})__________________')
+        print('==================================================')
+        input("Presione Enter para continuar...")
