@@ -3,9 +3,12 @@ import os
 import time
 from prompt_toolkit import prompt
 from prompt_toolkit.history import InMemoryHistory
+from sympy.parsing.sympy_parser import parse_expr, standard_transformations, implicit_multiplication_application
 
 Historial = InMemoryHistory()
 x ,y ,z = sympy.Symbol('x'), sympy.Symbol('y'), sympy.Symbol('z')
+
+Transformaciones = standard_transformations + (implicit_multiplication_application,)
 
 while True:
     os.system("clear")
@@ -21,12 +24,9 @@ while True:
         time.sleep(0.2)
         Expression = prompt("Ingrese la expresión: ", history=Historial)
         
-        Expression = Expression.replace('x', '*x')
-        Expression = Expression.replace('y', '*y')
-        Expression = Expression.replace('z', '*z')
         Expression = Expression.replace('^', '**')
-
-        Expression = sympy.sympify(Expression)
+        Expression = parse_expr(Expression, transformations=Transformaciones)
+        
         if Expression.has(x, y, z):
             pass
 
