@@ -1,6 +1,10 @@
 import sympy 
 import os
 import time
+from prompt_toolkit import prompt
+from prompt_toolkit.history import InMemoryHistory
+
+Historial = InMemoryHistory()
 x ,y ,z = sympy.Symbol('x'), sympy.Symbol('y'), sympy.Symbol('z')
 
 while True:
@@ -15,7 +19,7 @@ while True:
     
     try:
         time.sleep(0.2)
-        Expression = input("Ingrese la expresión: ")
+        Expression = prompt("Ingrese la expresión: ", history=Historial)
         
         Expression = Expression.replace('x', '*x')
         Expression = Expression.replace('y', '*y')
