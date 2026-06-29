@@ -3,11 +3,14 @@
 ## Descripcion:
  - Refactory es un programa simple de prueba que permite factorizar expresiones algebraicas.
 
-## Instrucciones:
+## Instrucciones Consola:
  - Simplemente ejecute el archivo Refactory.py e ingrese la expresion que desea factorizar.
  - Formato de ejemplo: (2x^2y + 8x^4y^4 + 4xy)
  - Salida Esperada: 2xy(y + 4x^3y^3 + 2) ***(El orden dentro del parentesis puede variar pero el resultado matematico es el mismo)***
  - El programa solo admite las variables (x, y, z)
+
+## Instrucciones Interfaz Grafica:
+ - Simplemente ejecute el archivo .py que dice interfaz y escriba su expresion a factorizar en el cuadro de texto que aparece, presione el boton factorizar y su expresion aparecera factorizada en una ventana emergente.
 
 ## Observaciones:
  - Puede salir del programa en cualquier momento presionando Ctrl + c dos veces
